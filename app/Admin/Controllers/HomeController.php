@@ -69,12 +69,12 @@ class HomeController extends Controller
                         'rooms' => Room::where('floor', 'Floor4')->get()
                     ]));
                 });
-                $row->column(3, function (Column $column) {
+                /* $row->column(3, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor4', [
                         'rooms' => Room::where('floor', 'Floor5')->get()
                         
                     ]));
-                });
+                }); */
                 $row->column(3, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor5', [
                         'rooms' => Room::where('floor', 'Floor6')->get()
@@ -83,7 +83,7 @@ class HomeController extends Controller
                 });
             });
 
-            $content->row(function (Row $row) {
+            /* $content->row(function (Row $row) {
                 $row->column(12, function (Column $column) {
                     $column->append(view('widgets.dashboard-title', [
                         'title' => 'RUBAGA APARTMENTS',
@@ -92,40 +92,40 @@ class HomeController extends Controller
                         'color' => 'bg-aqua'
                     ]));
                 });
-            });
+            }); */
 
 
             $content->row(function (Row $row) {
          
            
-                 $row->column(2, function (Column $column) {
+                /*  $row->column(2, function (Column $column) {
                       $column->append(view('widgets.dashboard-image', [
                          
                       ]));
-                  }); 
-                  $row->column(2, function (Column $column) {
+                  });  */
+                  /* $row->column(2, function (Column $column) {
                       $column->append(view('widgets.dashboard-image1', [
                           
                       ]));
-                  }); 
-                  $row->column(2, function (Column $column) {
+                  });  */
+                  /* $row->column(2, function (Column $column) {
                       $column->append(view('widgets.dashboard-image2', [
                           
                       ]));
-                  }); 
-                  $row->column(2, function (Column $column) {
+                  }); */ 
+                 /*  $row->column(2, function (Column $column) {
                       $column->append(view('widgets.dashboard-image3', [
                            'rooms' => Room::all(),
                           'tenants' => Tenant::all(),
                           'rentings' => Renting::all(),
                           'payments' => TenantPayment::all() 
                       ]));
-                  });
-                  $row->column(2, function (Column $column) {
+                  }); */
+                  /* $row->column(2, function (Column $column) {
                       $column->append(view('widgets.dashboard-image4', [
                           
                       ]));
-                  });
+                  }); */
                  /*  $row->column(1, function (Column $column) {
                       $column->append(view('widgets.dashboard-image5', [
                           
