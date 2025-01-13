@@ -39,19 +39,19 @@ class HomeController extends Controller
             ->description('Hello ' . $u->username . "!");
          
             $content->row(function (Row $row) {
-                $row->column(3, function (Column $column) {
+                $row->column(4, function (Column $column) {
                     $column->append(view('widgets.dashboard-groundfloor', [
                        
                         'rooms' => Room::where('floor', 'Floor1')->get()
                     ]));
                 });
-                $row->column(3, function (Column $column) {
+                $row->column(4, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor1', [
                         'rooms' => Room::where('floor', 'Floor2')->get()
                         
                     ]));
                 });
-                $row->column(3, function (Column $column) {
+                $row->column(4, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor2', [
                         'rooms' => Room::where('floor', 'Floor3')->get()
                        
@@ -64,7 +64,7 @@ class HomeController extends Controller
             $content->row(function (Row $row) {
                 
 
-                $row->column(3, function (Column $column) {
+                $row->column(4, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor3', [
                         'rooms' => Room::where('floor', 'Floor4')->get()
                     ]));
@@ -75,7 +75,7 @@ class HomeController extends Controller
                         
                     ]));
                 }); */
-                $row->column(3, function (Column $column) {
+                $row->column(4, function (Column $column) {
                     $column->append(view('widgets.dashboard-floor5', [
                         'rooms' => Room::where('floor', 'Floor6')->get()
                         
