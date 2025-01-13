@@ -32,7 +32,7 @@
 {{-- <body class="hold-transition login-page" @if (config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif> --}}
 
 <body class="hold-transition login-page"
-    style="background: url({{ url('public/assets/images/bg-1.jpg') }}) no-repeat;background-size: cover;">
+    {{-- style="background: url({{ url('public/assets/images/bg-1.jpg') }}) no-repeat;background-size: cover;" --}}>
     
     <div class="login-box" >
         <div class="login-logo">
@@ -107,7 +107,7 @@
            
 
         </div>
-        <hr style="background-color: rgb(183, 12, 12); height: 10px;">
+        {{-- <hr style="background-color: rgb(183, 12, 12); height: 10px;"> --}}
              <br> 
         <!-- /.login-box-body -->
     </div>
