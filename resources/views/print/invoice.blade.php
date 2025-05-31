@@ -166,7 +166,7 @@ $sign = public_path('/sign.jpg');
     <hr>
 
     <img class="img-fluid w-25" src="{{ $sign }}">  
-    <p class=""><i>MOGADISHU RESIDENCE</i></p>
+    <p class=""><i>LUBIRI RESIDENCE</i></p>
  
  
 
