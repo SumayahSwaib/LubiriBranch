@@ -295,7 +295,7 @@ $sign = public_path('/sign.jpg');
         <div>
             <p class="p-0 m-0 text-center" style="font-size: 2.5rem;color:rgb(12, 90, 12)"> <strong><b>NDEGE ESTATE
                         LIMITED</b></strong></p>
-            <p class="mt-1 text-center" style="font-size: 1.5rem;color:rgb(216, 30, 30)"><strong>&#40; Mogadishu
+            <p class="mt-1 text-center" style="font-size: 1.5rem;color:rgb(216, 30, 30)"><strong>&#40;Lubiri
                     Residence&#41;</strong> </p>
             <p class="mt-1 text-center">P.O.BOX: <b>28044 - Kampala - Uganda</b> </p>
         </div>
