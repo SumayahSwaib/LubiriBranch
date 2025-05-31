@@ -14,8 +14,9 @@ class DaysBefore extends Migration
     public function up()
     {
         Schema::table('tenant_payments', function (Blueprint $table) {
-            $table->bigInteger('days_before')->default(0)->nullable();
-
+            if (!Schema::hasColumn('tenant_payments', 'days_before')) {
+                $table->bigInteger('days_before')->default(0)->nullable();
+            }
         });
     }
 

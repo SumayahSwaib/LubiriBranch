@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Mogadishu residence</title>
+    <title>Lubiri residence</title>
     <base href="{{ url('') }}/">
 
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Mogadishu residence ">
-    <meta name="keywords" content="Mogadishu residence ">
+    <meta name="description" content="Lubiri residence ">
+    <meta name="keywords" content="Lubiri residence ">
     <meta name="author" content="Nannyombi Sumayah">
 
     <!-- Viewport -->

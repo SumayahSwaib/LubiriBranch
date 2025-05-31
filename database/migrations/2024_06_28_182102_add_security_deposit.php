@@ -14,7 +14,9 @@ class AddSecurityDeposit extends Migration
     public function up()
     {
         Schema::table('tenant_payments', function (Blueprint $table) {
-            $table->bigInteger('securty_deposit')->default(0)->nullable();
+            if (!Schema::hasColumn('tenant_payments', 'securty_deposit')) {
+                $table->bigInteger('securty_deposit')->default(0)->nullable();
+            }
         });
     }
 

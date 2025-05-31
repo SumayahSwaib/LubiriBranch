@@ -82,17 +82,7 @@ class HomeController extends Controller
                     ]));
                 });
             });
-
-            /* $content->row(function (Row $row) {
-                $row->column(12, function (Column $column) {
-                    $column->append(view('widgets.dashboard-title', [
-                        'title' => 'RUBAGA APARTMENTS',
-                        'sub_title' => 'Dashboard',
-                        'icon' => 'fa fa-dashboard',
-                        'color' => 'bg-aqua'
-                    ]));
-                });
-            }); */
+ 
 
 
             $content->row(function (Row $row) {

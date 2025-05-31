@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Models\Utils;
 
 $logo_link = public_path('/logo-1.png');
@@ -12,7 +10,7 @@ $sign = public_path('/sign.jpg');
 <style>
     @page {
         size: A4 potrait;
-        
+
     }
 
     .text-lowercase {
@@ -42,6 +40,7 @@ $sign = public_path('/sign.jpg');
     .font-italic {
         font-style: italic !important
     }
+
     .text-center {
         text-align: center !important
     }
@@ -273,35 +272,11 @@ $sign = public_path('/sign.jpg');
     .my-table tbody tr td {
         padding: 0.2rem !important;
         font-size: 12px !important;
-        border: 1px solid #0b0080 ! border-radius: 5px;
     }
 
     .title {
         font-family: 'Courier New', Courier, monospace;
     }
-
-    #customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 6px;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  text-align: left;
-  background-color: #0704aa;
-  color: white;
-}
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -310,38 +285,38 @@ $sign = public_path('/sign.jpg');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{{--     <link rel="stylesheet" href="{{ $link }}">
- --}}    <title>Tenants Payment report</title>
+    {{--     <link rel="stylesheet" href="{{ $link }}">
+ --}} <title>Tenants Payment report</title>
 </head>
 
 <body>
     <div class="main">
 
         <div>
-            <hr style="height:3px;border-width:0;color:rgb(45, 18, 104);background-color:rgb(33, 9, 84)">
-
-            <p class="p-0 m-0 text-center" style="font-size: 2.5rem;color:rgb(45, 18, 104)" >  <strong><b>NDEGE ESTATE LIMITED</b></strong></p>
-            <hr style="height:3px;border-width:0;color:rgb(45, 18, 104);background-color:rgb(33, 9, 84)">
-            <p class="mt-1 text-center" style="font-size: 1.5rem;color:rgb(216, 30, 30)"><strong>&#40; Lubiri Apartments&#41;</strong> </p>
+            <p class="p-0 m-0 text-center" style="font-size: 2.5rem;color:rgb(12, 90, 12)"> <strong><b>NDEGE ESTATE
+                        LIMITED</b></strong></p>
+            <p class="mt-1 text-center" style="font-size: 1.5rem;color:rgb(216, 30, 30)"><strong>&#40; Mogadishu
+                    Residence&#41;</strong> </p>
             <p class="mt-1 text-center">P.O.BOX: <b>28044 - Kampala - Uganda</b> </p>
         </div>
-      
 
-        
+        <hr style="height:10px;border-width:0;color:rgb(12, 90, 12);background-color:rgb(12, 90, 12)">
+
+
 
         {{-- <p class="my-h2 mt-3 mb-2" style="font-size: 1.0rem">
             FINANCIAL REPORT FOR THE PERIOD {{ Utils::my_date($start_date) . ' - ' . Utils::my_date($end_date) }}
         </p> --}}
 
-       
+
 
         <br>
-        <p class="my-h2  mb-2 title text-left" style="font-size: 1.0rem; ">Tenants Payemnts for the period
+        <p class="my-h2  mb-2 title text-center" style="font-size: 1.0rem; ">Tenants Payemnts for the period
             {{ Utils::my_date($start_date) . ' - ' . Utils::my_date($end_date) }}</p>
-            <br>
-        <table id="customers" class="my-table" style="width: 100%;">
+        <br>
+        <table class="table-bordered my-table" style="width: 100%">
             <thead class="bg-primary text-white text-uppercase">
-                <tr style="background-color: rgb(45, 18, 104);"  class="p-4  text-white">
+                <tr style="background-color: rgb(15, 95, 19);" class="p-4  text-white">
                     <th style="border-color: white; height: 23px; width: 15px;" class="py-1 text-white">S/n.</th>
                     <th style="border-color: white; height: 10px; " class=" p-1 px-1">Date</th>
                     <th style="border-color: white; height: 10px; " class=" p-1">Tenant</th>
@@ -355,62 +330,88 @@ $sign = public_path('/sign.jpg');
             <tbody class="table table-bordered p-2">
                 @php
                     $i = 0;
+                    $total_income = 0;
+                    $total_balance = 0;
                 @endphp
                 @foreach ($tenantPayments as $trans)
                     @php
                         $i++;
+                        $total_income += $trans->amount;
+                        $total_balance += $trans->renting->balance;
                     @endphp
                     <tr>
                         <td>{{ $i }}</td>
                         <td>{{ Utils::my_date($trans->created_at) }}</td>
-                        <td style="text-align: left;"><b>{{ $trans->tenant->name }}</b></td>
+                        @if (isset($trans->tenant))
+                            <td style="text-align: left;"><b>{{ $trans->tenant->name }}</b></td>
+                        @else
+                            <td style="text-align: left;"><b>N/A</b></td>
+                        @endif
                         {{-- <td style= "border-color: rgb(12, 12, 12); height: 10px; text-align: left;"><b>{{ $trans->tenant->room_id }}</b></td> --}}
-                        <td style="text-align: left;"><b>{{ number_format($trans->amount) }}</b></td>
+                        <td style="text-align: right;"><b>{{ number_format($trans->amount) }}</b></td>
                         <td style="text-align: left;"><b>{{ $trans->renting->name_text2 }}</b></td>
-                       {{--  <td style="text-align: left;"><b>#{{ $trans->renting->id }}</b></td> --}} 
-                       {{--  <td style="text-align: left;"><b>#{{ $trans->renting->id }}</b></td> --}}
+                        {{--  <td style="text-align: left;"><b>#{{ $trans->renting->id }}</b></td> --}}
+                        {{--  <td style="text-align: left;"><b>#{{ $trans->renting->id }}</b></td> --}}
                         <td style="text-align: left;"><b>{{ number_format($trans->renting->balance) }}</b></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-<br>
+        <br>
 
-       
 
-<p class="my-h2  mb-2 title text-left" style="font-size: 1.0rem; ">Tenants in over stay</p>
 
-@foreach ($rentings as $rent )
-@if ($rent->is_overstay == 'Yes')
-@php
-$i++;
-@endphp
-<p>{{ $i }}. {{ $rent->tenant->name }}</p>
-@endif  
-@endforeach
+        <p class="my-h2 mb-2 title text-center" style="font-size: 1.0rem;">Tenants in over stay</p>
 
-    <br>
+        @php
+            $overstayTenants = $rentings->filter(function ($rent) {
+                return $rent->is_overstay == 'Yes';
+            });
+        @endphp
 
-    <hr style="height:3px;border-width:0;color:rgb(45, 18, 104);background-color:rgb(33, 9, 84)">
+        @if ($overstayTenants->isEmpty())
+            <p class="text-center">No tenants in overstay.</p>
+        @else
+            @php $j = 1; @endphp
+            @foreach ($overstayTenants as $rent)
+                <p>{{ $j++ }}. {{ $rent->tenant->name }}</p>
+            @endforeach
+        @endif
 
-    
-    <div >
-        <p class="my-h2  ml-10 mt-10 mb-2 title text-left" style="font-size: 1.0rem">Summary</p>
-               @include('components.detail-item', [
-                   't' => 'Total Income',
-                   's' => 'UGX ' . number_format($total_income),
-               ])
-              
-       
-               @include('components.detail-item', [
-                   't' => 'Total Balance',
-                   's' => 'UGX ' . number_format($report->total_expense),
-               ])
-       
-              
-       </div>
-       
-    <hr style="height:3px;border-width:0;color:rgb(45, 18, 104);background-color:rgb(33, 9, 84)">
+        <br>
+
+
+
+        <div class="mt-4 p-4"
+            style="border: 2px solid #0c5a0c; border-radius: 12px; background: #f8fdf8; max-width: 400px; margin: 0 auto; box-shadow: 0 2px 8px rgba(12,90,12,0.07);">
+            <p class="my-h2 mb-3 title text-left" style="font-size: 1.2rem; color: #0c5a0c; letter-spacing: 1px;">
+                Summary</p>
+            <div style="padding-left: 1rem;">
+                @include('components.detail-item', [
+                    't' => 'Total Income',
+                    's' =>
+                        '<span style="color:#198754;font-weight:600;">UGX ' .
+                        number_format($total_income) .
+                        '</span>',
+                ])
+
+                @include('components.detail-item', [
+                    't' => 'Total Balance',
+                    's' =>
+                        '<span style="color:#0d6efd;font-weight:600;">UGX ' .
+                        number_format($total_balance) .
+                        '</span>',
+                ])
+
+                @include('components.detail-item', [
+                    't' => 'Total Expense',
+                    's' =>
+                        '<span style="color:#dc3545;font-weight:600;">UGX ' .
+                        number_format($report->total_expense) .
+                        '</span>',
+                ])
+            </div>
+        </div>
 </body>
 
 </html>
