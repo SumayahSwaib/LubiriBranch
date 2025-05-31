@@ -142,6 +142,7 @@ class LandLordReportController extends AdminController
             ->rules('required');
  */
         $form->disableCreatingCheck();
+        $form->disableEditingCheck();
 
         $form->disableViewCheck();
         $form->radio('target_type', 'Target Type')
@@ -153,8 +154,7 @@ class LandLordReportController extends AdminController
                     $years_ago[date('Y', strtotime("-$i year"))] = date('Y', strtotime("-$i year"));
                 }
                 $form->select('target_year', 'Target Year')
-                    ->options($years_ago)
-                    ->rules('required');
+                    ->options($years_ago);
             })
             ->when('Monthly', function (Form $form) {
                 $months_ago = [];
@@ -162,12 +162,10 @@ class LandLordReportController extends AdminController
                     $months_ago[date('Y-m', strtotime("-$i month"))] = date('F Y', strtotime("-$i month"));
                 }
                 $form->select('target_month', 'Target Month')
-                    ->options($months_ago)
-                    ->rules('required');
+                    ->options($months_ago);
             })
             ->when('Custom', function (Form $form) {
-                $form->dateRange('start_date', 'end_date', 'Report Date Range')
-                    ->rules('required');
+                $form->dateRange('start_date', 'end_date', 'Report Date Range');
             });
 
 
