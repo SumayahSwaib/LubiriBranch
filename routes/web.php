@@ -10,7 +10,13 @@ use App\Models\TenantPayment;
 use App\Models\Utils;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+Route::get('migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return nl2br(Artisan::output());
+});
 
 Route::get('generate-class', [MainController::class, 'generate_class']);
 Route::get('process-things', [Utils::class, 'process_things']);
